@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>My Favorite Things List is : </h1>
+  <p></p>
+
+  #if ($items)
+   <ul>
+     #foreach ($item in $items)
+     <li>$item.getDescription()</li>
+     #end
+   </ul>
+   #else
+     <p>No items!</p>
+     #end
+
+  <h3>Add your new favorite thing: </h3>
+  <form action='/items' method='post'>
+
+    <div class="form-group">
+      <label for="description">Your FavoriteThings</label>
+      <input id="description" name="description" type="text">
+    </div>
+
+    <button type="submit" class="btn btn-info">Add your new FavoriteThings</button>
+  </form>
+</div>

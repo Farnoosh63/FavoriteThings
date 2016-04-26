@@ -22,27 +22,28 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("Leap year detector");
+    assertThat(pageSource()).contains("My Favorite Things List is : ");
   }
 
   @Test
-  public void isALeapYear() {
-    goTo("http://localhost:4567");
-    fill("#year").with("2004");
-    submit(".btn");
-    assertThat(pageSource()).contains("2004 is a leap year!");
-  }
-
-  @Test
-  public void multipleTasksAreDisplayedTest() {
+  public void oneItemIsAdded() {
     goTo("http://localhost:4567/");
-    fill("#description").with("task description");
+    fill("#description").with("travelling to a tropical island");
     submit(".btn");
-    click("a", withText("Go Back"));
-    fill("#description").with("another task description");
-    submit(".btn");
-    click("a", withText("Go Back"));
-    assertThat(pageSource()).contains("task description");
-    assertThat(pageSource()).contains("another task description");
+    assertThat(pageSource()).contains("Your favorite thing has been saved.");
   }
+
+  @Test
+  public void twoItemsIsAdded() {
+    goTo("http://localhost:4567/");
+    fill("#description").with("travelling to a tropical island");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    //fill("#description").with("moving to California");
+    //submit(".btn");
+    //click("a", withText("Go Back"));
+    assertThat(pageSource()).contains("travelling to a tropical island");
+    //assertThat(pageSource()).contains("moving to California");
+  }
+
 }
