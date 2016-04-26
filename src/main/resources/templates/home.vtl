@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Task list!</h1>
+  <p></p>
+  #if ($tasks)
+  <ul>
+    #foreach ($task in $tasks)
+    <li>$task.getDescription()</li>
+    #end
+  </ul>
+  #else
+    <p>No tasks!</p>
+    #end
+
+  <h3>Add a new task: </h3>
+  <form action='/tasks' method='post'>
+
+    <div class="form-group">
+      <label for="description">Task description</label>
+      <input id="description" name="description" type="text">
+    </div>
+
+    <button type="submit" class="btn btn-info">Add task</button>
+  </form>
+</div>
