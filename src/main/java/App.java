@@ -22,33 +22,19 @@ public class App {
 
     post("/items", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
-
+        String description = request.queryParams("description");
+        FavoriteThings newFavoriteThings = new FavoriteThings(description);
         ArrayList<FavoriteThings> items = request.session().attribute("items");
-       if (items == null) {
-         items = new ArrayList<FavoriteThings>();
-         request.session().attribute("items", items);
-       }
+        if (items == null) {
+          items = new ArrayList<FavoriteThings>();
+          request.session().attribute("items",items);
+        }
+        items.add(newFavoriteThings);
 
-       String description = request.queryParams("description");
-       FavoriteThings newFavoriteThings = new FavoriteThings(description);
-       items.add(newFavoriteThings);
-        //
-        // String description = request.queryParams("description");
-        // System.out.println(description);
-        // FavoriteThings newFavoriteThing = new FavoriteThings(description);
-        // //here we create a new fave thing
-        // // FavoriteThings newFavoriteThing = new FavoriteThings(description);
-        // System.out.println(description);
-        // //now we need to create a list of fave Things
-        //
-        // items = new ArrayList<FavoriteThings>();
-        // //then we add our new fave thing to the list
-        // items.add(description);
-        // System.out.println(items);
-        // //then we add it to the session so we can display it.
-        // request.session().attribute("items", items);
-        // System.out.println(items);
-        // // request.session().attribute("items",newFavoriteThings);
+        //here we create a new fave thing
+        //now we need to create a list of fave Things
+        //then we add our new fave thing to the list
+        //then we add it to the session so we can display it.
 
 
         model.put("template", "templates/success.vtl");

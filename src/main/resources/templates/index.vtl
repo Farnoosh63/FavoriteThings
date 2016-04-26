@@ -2,15 +2,12 @@
   <h1>My Favorite Things List is : </h1>
   <p></p>
 
-  #if ($items)
    <ul>
      #foreach ($item in $items)
      <li>$item.getDescription()</li>
      #end
    </ul>
-   #else
-     <p>No items!</p>
-     #end
+
 
   <h3>Add your new favorite thing: </h3>
   <form action='/items' method='post'>

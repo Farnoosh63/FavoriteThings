@@ -39,11 +39,11 @@ public class AppTest extends FluentTest {
     fill("#description").with("travelling to a tropical island");
     submit(".btn");
     click("a", withText("Go Back"));
-    //fill("#description").with("moving to California");
-    //submit(".btn");
-    //click("a", withText("Go Back"));
+    fill("#description").with("moving to California");
+    submit(".btn");
+    click("a", withText("Go Back"));
     assertThat(pageSource()).contains("travelling to a tropical island");
-    //assertThat(pageSource()).contains("moving to California");
+    assertThat(pageSource()).contains("moving to California");
   }
 
 }
